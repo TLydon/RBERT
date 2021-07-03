@@ -484,7 +484,7 @@ input_fn_builder_EF <- function(features,
 #'   by temporarily setting the logging threshold to its highest level. If TRUE,
 #'   keeps the current logging threshold, which defaults to "WARN". To change
 #'   the logging threshold of the current session, run
-#'   \code{tensorflow::tf$logging$set_verbosity(tensorflow::tf$logging$DEBUG)}
+#'   \code{tensorflow::tf$compat$v1$logging$set_verbosity(tensorflow::tf$compat$v1$logging$DEBUG)}
 #'   (setting whatever verbosity level you want).
 #'
 #' @return A list with elements "output" (the layer outputs as a tibble) and/or
@@ -576,10 +576,10 @@ extract_features <- function(examples,
     layer_indexes <- layer_indexes[layer_indexes != 0]
   }
 
-  old_verbosity_level <- tensorflow::tf$logging$get_verbosity()
+  old_verbosity_level <- tensorflow::tf$compat$v1$logging$get_verbosity()
   old_sys_log_level <- Sys.getenv("TF_CPP_MIN_LOG_LEVEL")
   if (!verbose) {
-    tensorflow::tf$logging$set_verbosity(tensorflow::tf$logging$FATAL)
+    tensorflow::tf$compat$v1$logging$set_verbosity(tensorflow::tf$compat$v1$logging$FATAL)
     Sys.setenv(TF_CPP_MIN_LOG_LEVEL = "3")
   }
 
@@ -721,7 +721,7 @@ extract_features <- function(examples,
   }
 
   # restore original verbosity levels
-  tensorflow::tf$logging$set_verbosity(old_verbosity_level)
+  tensorflow::tf$compat$v1$logging$set_verbosity(old_verbosity_level)
   Sys.setenv(TF_CPP_MIN_LOG_LEVEL = old_sys_log_level)
 
   # Iterate one more time to let python finish and be happy.
@@ -1479,7 +1479,7 @@ input_fn_builder_EF <- function(features,
 #'   by temporarily setting the logging threshold to its highest level. If TRUE,
 #'   keeps the current logging threshold, which defaults to "WARN". To change
 #'   the logging threshold of the current session, run
-#'   \code{tensorflow::tf$compat$v1$logging$set_verbosity(tensorflow::tf$logging$DEBUG)}
+#'   \code{tensorflow::tf$compat$v1$logging$set_verbosity(tensorflow::tf$compat$v1$logging$DEBUG)}
 #'   (setting whatever verbosity level you want).
 #'
 #' @return A list with elements "output" (the layer outputs as a tibble) and/or
@@ -1574,7 +1574,7 @@ extract_features <- function(examples,
   old_verbosity_level <- tensorflow::tf$compat$v1$logging$get_verbosity()
   old_sys_log_level <- Sys.getenv("TF_CPP_MIN_LOG_LEVEL")
   if (!verbose) {
-    tensorflow::tf$compat$v1$logging$set_verbosity(tensorflow::tf$logging$FATAL)
+    tensorflow::tf$compat$v1$logging$set_verbosity(tensorflow::tf$compat$v1$logging$FATAL)
     Sys.setenv(TF_CPP_MIN_LOG_LEVEL = "3")
   }
 
