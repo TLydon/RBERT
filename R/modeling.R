@@ -565,9 +565,8 @@ return(tensorflow::tf$keras$layers$LayerNormalization(axis=-1L)(input_tensor
 #' layer_norm_and_dropout(tfx, dropout_prob = 0.5)
 #' }
 layer_norm_and_dropout <- function(input_tensor,
-dropout_prob = NULL,
-name = NULL) {
-output_tensor <- layer_norm(input_tensor, name)
+dropout_prob = NULL) {
+output_tensor <- layer_norm(input_tensor)
 output_tensor <- dropout(output_tensor, dropout_prob)
 return(output_tensor)
 }
