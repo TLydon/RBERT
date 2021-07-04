@@ -579,7 +579,7 @@ layer_indexes <- layer_indexes[layer_indexes != 0]
 old_verbosity_level <- tensorflow::tf$compat$v1$logging$get_verbosity()
 old_sys_log_level <- Sys.getenv("TF_CPP_MIN_LOG_LEVEL")
 if (!verbose) {
-tensorflow::tf$compat$v1$logging$set_verbosity(tensorflow::tf$logging$FATAL)
+tensorflow::tf$compat$v1$logging$set_verbosity(tensorflow::tf$compat$v1$logging$FATAL)
 Sys.setenv(TF_CPP_MIN_LOG_LEVEL = "3")
 }
 
