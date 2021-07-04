@@ -541,8 +541,7 @@ return(output)
 #' layer_norm(tfx)
 #' }
 layer_norm <- function(input_tensor) {
-return(tensorflow::tf$keras$layers$LayerNormalization(axis=-1L)(
-inputs = input_tensor
+return(tensorflow::tf$keras$layers$LayerNormalization(axis=-1L)(input_tensor
 ))
 }
 
