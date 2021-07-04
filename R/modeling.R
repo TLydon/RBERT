@@ -543,8 +543,7 @@ return(output)
 layer_norm <- function(input_tensor, name = NULL) {
 return(tensorflow::tf$keras$layers$LayerNormalization(
 inputs = input_tensor,
-begin_norm_axis = -1L,
-begin_params_axis = -1L,
+axis=-1L,
 scope = name
 ))
 }
