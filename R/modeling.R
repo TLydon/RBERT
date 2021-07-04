@@ -540,10 +540,9 @@ return(output)
 #' tfx <- tensorflow::tf$compat$v1$get_variable("example", tensorflow::shape(10L))
 #' layer_norm(tfx)
 #' }
-layer_norm <- function(input_tensor, name = NULL) {
-return(tensorflow::tf$keras$layers$LayerNormalization(
-inputs = input_tensor,
-axis=-1L
+layer_norm <- function(input_tensor) {
+return(tensorflow::tf$keras$layers$LayerNormalization(axis=-1L)(
+inputs = input_tensor
 ))
 }
 
