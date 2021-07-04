@@ -66,7 +66,7 @@ default), "attention" (attention probabilities), or both.}
 by temporarily setting the logging threshold to its highest level. If TRUE,
 keeps the current logging threshold, which defaults to "WARN". To change
 the logging threshold of the current session, run
-\code{tensorflow::tf$compat$v1$logging$set_verbosity(tensorflow::tf$logging$DEBUG)}
+\code{tensorflow::tf$compat$v1$logging$set_verbosity(tensorflow::tf$compat$v1$logging$DEBUG)}
 (setting whatever verbosity level you want).}
 }
 \value{
