@@ -1320,13 +1320,13 @@ output_layer <- model$pooled_output
 # hidden_size <- output_layer$shape[[-1L]]$value # This gives the same as:
 hidden_size <- utils::tail(output_layer$shape$as_list(), -1)
 
-output_weights <- tensorflow::tf.compat$v1$get_variable(
+output_weights <- tensorflow::tf$compat$v1$get_variable(
 name = "output_weights",
 shape = tensorflow::shape(num_labels, hidden_size),
 initializer = tensorflow::tf$compat$v1$truncated_normal_initializer(stddev = 0.02)
 )
 
-output_bias <- tensorflow::tf.compat$v1$get_variable(
+output_bias <- tensorflow::tf$compat$v1$get_variable(
 name = "output_bias",
 shape = tensorflow::shape(num_labels),
 initializer = tensorflow::tf$zeros_initializer()
@@ -2226,13 +2226,13 @@ output_layer <- model$pooled_output
 # hidden_size <- output_layer$shape[[-1L]]$value # This gives the same as:
 hidden_size <- utils::tail(output_layer$shape$as_list(), -1)
 
-output_weights <- tensorflow::tf.compat$v1$get_variable(
+output_weights <- tensorflow::tf$compat$v1$get_variable(
 name = "output_weights",
 shape = tensorflow::shape(num_labels, hidden_size),
 initializer = tensorflow::tf$compat$v1$truncated_normal_initializer(stddev = 0.02)
 )
 
-output_bias <- tensorflow::tf.compat$v1$get_variable(
+output_bias <- tensorflow::tf$compat$v1$get_variable(
 name = "output_bias",
 shape = tensorflow::shape(num_labels),
 initializer = tensorflow::tf$zeros_initializer()
