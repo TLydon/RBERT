@@ -11,9 +11,9 @@ get_activation(activation_string)
 }
 \value{
 A function corresponding to the activation function. If
-  \code{activation_string} is NA, empty, or "linear", this will return NA. If
-  \code{activation_string} is not a string, it will return
-  \code{activation_string}.
+\code{activation_string} is NA, empty, or "linear", this will return NA. If
+\code{activation_string} is not a string, it will return
+\code{activation_string}.
 }
 \description{
 Example: "relu" => `tensorflow::tf$nn$relu`.

@@ -18,7 +18,7 @@ https://arxiv.org/abs/1606.08415
 }
 \examples{
 \dontrun{
-tfx <- tensorflow::tf$get_variable("none", tensorflow::shape(10L))
+tfx <- tensorflow::tf$compat$v1$get_variable("none", tensorflow::shape(10L))
 gelu(tfx)
 }
 }

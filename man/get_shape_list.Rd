@@ -17,10 +17,10 @@ in \code{expected_rank}, an exception will be thrown.}
 }
 \value{
 A list of dimensions of the shape of tensor. All static dimensions
-  will be returned as native integers, and dynamic dimensions will be
-  returned as tf.Tensor scalars. (I'm not very comfortable with this
-  behavior. It's not usually good practice to make the return type vary
-  depending on the input.)
+will be returned as native integers, and dynamic dimensions will be
+returned as tf.Tensor scalars. (I'm not very comfortable with this
+behavior. It's not usually good practice to make the return type vary
+depending on the input.)
 }
 \description{
 Returns a list of the shape of tensor, preferring static dimensions. (A
@@ -30,14 +30,14 @@ https://stackoverflow.com/questions/37096225/
 }
 \examples{
 \dontrun{
-with(tensorflow::tf$variable_scope("examples",
-  reuse = tensorflow::tf$AUTO_REUSE
+with(tensorflow::tf$compat$v1$variable_scope("examples",
+reuse = tensorflow::tf$compat$v1$AUTO_REUSE
 ), {
-  phx <- tensorflow::tf$placeholder(tensorflow::tf$int32, shape = c(4))
-  get_shape_list(phx) # static
-  tfu <- tensorflow::tf$unique(phx)
-  tfy <- tfu$y
-  get_shape_list(tfy) # dynamic
+phx <- tensorflow::tf$compat$v1$placeholder(tensorflow::tf$int32, shape = c(4))
+get_shape_list(phx) # static
+tfu <- tensorflow::tf$unique(phx)
+tfy <- tfu$y
+get_shape_list(tfy) # dynamic
 })
 }
 }

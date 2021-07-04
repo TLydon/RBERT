@@ -5,17 +5,17 @@
 \title{Build multi-head, multi-layer Transformer}
 \usage{
 transformer_model(
-  input_tensor,
-  attention_mask = NULL,
-  hidden_size = 768L,
-  num_hidden_layers = 12L,
-  num_attention_heads = 12L,
-  intermediate_size = 3072L,
-  intermediate_act_fn = gelu,
-  hidden_dropout_prob = 0.1,
-  attention_probs_dropout_prob = 0.1,
-  initializer_range = 0.02,
-  do_return_all_layers = FALSE
+input_tensor,
+attention_mask = NULL,
+hidden_size = 768L,
+num_hidden_layers = 12L,
+num_attention_heads = 12L,
+intermediate_size = 3072L,
+intermediate_act_fn = gelu,
+hidden_dropout_prob = 0.1,
+attention_probs_dropout_prob = 0.1,
+initializer_range = 0.02,
+do_return_all_layers = FALSE
 )
 }
 \arguments{
@@ -55,8 +55,8 @@ probabilities.}
 }
 \value{
 float Tensor of shape \code{[batch_size, seq_length, hidden_size]},
-  the final hidden layer of the Transformer. Or if `do_return_all_layers` is
-  `TRUE`, a list of such Tensors (one for each hidden layer).
+the final hidden layer of the Transformer. Or if `do_return_all_layers` is
+`TRUE`, a list of such Tensors (one for each hidden layer).
 }
 \description{
 Multi-headed, multi-layer Transformer from "Attention is All You Need". This
@@ -74,21 +74,21 @@ batch_size <- 10
 seq_length <- 500
 hidden_size <- 120
 
-with(tensorflow::tf$variable_scope("examples",
-  reuse = tensorflow::tf$AUTO_REUSE
+with(tensorflow::tf$compat$v1$variable_scope("examples",
+reuse = tensorflow::tf$compat$v1$AUTO_REUSE
 ), {
-  input_tensor <- tensorflow::tf$get_variable("input",
-    shape = c(
-      batch_size,
-      seq_length,
-      hidden_size
-    )
-  )
+input_tensor <- tensorflow::tf$compat$v1$get_variable("input",
+shape = c(
+batch_size,
+seq_length,
+hidden_size
+)
+)
 })
 
 model_t <- transformer_model(
-  input_tensor = input_tensor,
-  hidden_size = hidden_size
+input_tensor = input_tensor,
+hidden_size = hidden_size
 )
 }
 }

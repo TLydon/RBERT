@@ -16,14 +16,14 @@ value (NOT of KEEPING a dimension as in `tf.nn.dropout`).}
 }
 \value{
 Tensor resulting from applying layer_norm and dropout to
-  \code{input_tensor}.
+\code{input_tensor}.
 }
 \description{
 Run layer normalization followed by dropout
 }
 \examples{
 \dontrun{
-tfx <- tensorflow::tf$get_variable("example2", tensorflow::shape(10L))
+tfx <- tensorflow::tf$compat$v1$get_variable("example2", tensorflow::shape(10L))
 layer_norm_and_dropout(tfx, dropout_prob = 0.5)
 }
 }

@@ -21,13 +21,13 @@ Throws an error if the tensor rank is not of the expected rank.
 }
 \examples{
 \dontrun{
-with(tensorflow::tf$variable_scope("examples",
-  reuse = tensorflow::tf$AUTO_REUSE
+with(tensorflow::tf$compat$v1$variable_scope("examples",
+reuse = tensorflow::tf$compat$v1$AUTO_REUSE
 ), {
-  ids <- tensorflow::tf$get_variable("x", dtype = "int32", shape = 10L)
-  assert_rank(ids, 1)
-  assert_rank(ids, 1:2)
-  assert_rank(ids, 2)
+ids <- tensorflow::tf$compat$v1$get_variable("x", dtype = "int32", shape = 10L)
+assert_rank(ids, 1)
+assert_rank(ids, 1:2)
+assert_rank(ids, 2)
 })
 }
 }

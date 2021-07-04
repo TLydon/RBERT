@@ -5,21 +5,21 @@
 \title{Extract output features from BERT}
 \usage{
 extract_features(
-  examples,
-  model = c("bert_base_uncased", "bert_base_cased", "bert_large_uncased",
-    "bert_large_cased", "bert_large_uncased_wwm", "bert_large_cased_wwm",
-    "bert_base_multilingual_cased", "bert_base_chinese", "scibert_scivocab_uncased",
-    "scibert_scivocab_cased", "scibert_basevocab_uncased", "scibert_basevocab_cased"),
-  ckpt_dir = NULL,
-  vocab_file = find_vocab(ckpt_dir),
-  bert_config_file = find_config(ckpt_dir),
-  init_checkpoint = find_ckpt(ckpt_dir),
-  output_file = NULL,
-  max_seq_length = 128L,
-  layer_indexes = -4:-1,
-  batch_size = 2L,
-  features = c("output", "attention"),
-  verbose = FALSE
+examples,
+model = c("bert_base_uncased", "bert_base_cased", "bert_large_uncased",
+"bert_large_cased", "bert_large_uncased_wwm", "bert_large_cased_wwm",
+"bert_base_multilingual_cased", "bert_base_chinese", "scibert_scivocab_uncased",
+"scibert_scivocab_cased", "scibert_basevocab_uncased", "scibert_basevocab_cased"),
+ckpt_dir = NULL,
+vocab_file = find_vocab(ckpt_dir),
+bert_config_file = find_config(ckpt_dir),
+init_checkpoint = find_ckpt(ckpt_dir),
+output_file = NULL,
+max_seq_length = 128L,
+layer_indexes = -4:-1,
+batch_size = 2L,
+features = c("output", "attention"),
+verbose = FALSE
 )
 }
 \arguments{
@@ -66,12 +66,12 @@ default), "attention" (attention probabilities), or both.}
 by temporarily setting the logging threshold to its highest level. If TRUE,
 keeps the current logging threshold, which defaults to "WARN". To change
 the logging threshold of the current session, run
-\code{tensorflow::tf$logging$set_verbosity(tensorflow::tf$logging$DEBUG)}
+\code{tensorflow::tf$compat$v1$logging$set_verbosity(tensorflow::tf$logging$DEBUG)}
 (setting whatever verbosity level you want).}
 }
 \value{
 A list with elements "output" (the layer outputs as a tibble) and/or
-  "attention" (the attention weights as a tibble).
+"attention" (the attention weights as a tibble).
 }
 \description{
 Given example sentences (as a list of \code{InputExample_EF}s), apply an
@@ -82,19 +82,19 @@ potentially be used as features in downstream tasks.)
 \dontrun{
 BERT_PRETRAINED_DIR <- download_BERT_checkpoint("bert_base_uncased")
 examples <- c("I saw the branch on the bank.",
-              "I saw the branch of the bank.")
+"I saw the branch of the bank.")
 
 # Just specify checkpoint directory.
 feats <- extract_features(
-  examples = examples,
-  ckpt_dir = BERT_PRETRAINED_DIR
+examples = examples,
+ckpt_dir = BERT_PRETRAINED_DIR
 )
 # Can also just specify the model, if you have it downloaded.
 # In interactive mode, you'll be prompted to download the model if you do not
 # have it.
 feats <- extract_features(
-  examples = examples,
-  model = "bert_base_uncased"
+examples = examples,
+model = "bert_base_uncased"
 )
 }
 }

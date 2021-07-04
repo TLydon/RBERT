@@ -37,22 +37,22 @@ The routine tf.gradients() is called in the course of this function.
 }
 \examples{
 \dontrun{
-with(tensorflow::tf$variable_scope("examples",
-  reuse = tensorflow::tf$AUTO_REUSE
+with(tensorflow::tf$compat$v1$variable_scope("examples",
+reuse = tensorflow::tf$compat$v1$AUTO_REUSE
 ), {
-  totrain <- tensorflow::tf$get_variable(
-    "totrain",
-    tensorflow::shape(10L, 20L)
-  )
-  loss <- 2 * totrain
+totrain <- tensorflow::tf$compat$v1$get_variable(
+"totrain",
+tensorflow::shape(10L, 20L)
+)
+loss <- 2 * totrain
 
-  train_op <- create_optimizer(
-    loss = loss,
-    init_lr = 0.01,
-    num_train_steps = 20L,
-    num_warmup_steps = 10L,
-    use_tpu = FALSE
-  )
+train_op <- create_optimizer(
+loss = loss,
+init_lr = 0.01,
+num_train_steps = 20L,
+num_warmup_steps = 10L,
+use_tpu = FALSE
+)
 })
 }
 }

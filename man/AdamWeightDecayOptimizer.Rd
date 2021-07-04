@@ -5,13 +5,13 @@
 \title{Constructor for objects of class AdamWeightDecayOptimizer}
 \usage{
 AdamWeightDecayOptimizer(
-  learning_rate,
-  weight_decay_rate = 0,
-  beta_1 = 0.9,
-  beta_2 = 0.999,
-  epsilon = 1e-06,
-  exclude_from_weight_decay = NULL,
-  name = "AdamWeightDecayOptimizer"
+learning_rate,
+weight_decay_rate = 0,
+beta_1 = 0.9,
+beta_2 = 0.999,
+epsilon = 1e-06,
+exclude_from_weight_decay = NULL,
+name = "AdamWeightDecayOptimizer"
 )
 }
 \arguments{
@@ -33,7 +33,7 @@ exclude from weight decay.}
 }
 \value{
 An object of class "AdamWeightDecayOptimizer", which is a (hacky)
-  modification of the tf.train.Optimizer class.
+modification of the tf.train.Optimizer class.
 }
 \description{
 A basic Adam optimizer that includes "correct" L2 weight decay.
@@ -44,10 +44,10 @@ Inherits from class tf.train.Optimizer.
 }
 \examples{
 \dontrun{
-with(tensorflow::tf$variable_scope("examples",
-  reuse = tensorflow::tf$AUTO_REUSE
+with(tensorflow::tf$compat$v1$variable_scope("examples",
+reuse = tensorflow::tf$compat$v1$AUTO_REUSE
 ), {
-  optimizer <- AdamWeightDecayOptimizer(learning_rate = 0.01)
+optimizer <- AdamWeightDecayOptimizer(learning_rate = 0.01)
 })
 }
 }

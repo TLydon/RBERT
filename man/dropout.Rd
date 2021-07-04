@@ -20,7 +20,7 @@ Perform Dropout
 }
 \examples{
 \dontrun{
-tfx <- tensorflow::tf$get_variable("none", tensorflow::shape(10L))
+tfx <- tensorflow::tf$compat$v1$get_variable("none", tensorflow::shape(10L))
 dropout(tfx, 0.5)
 }
 }

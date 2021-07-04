@@ -5,13 +5,13 @@
 \title{Define \code{model_fn} closure for \code{TPUEstimator}}
 \usage{
 model_fn_builder(
-  bert_config,
-  num_labels,
-  init_checkpoint,
-  learning_rate,
-  num_train_steps,
-  num_warmup_steps,
-  use_tpu
+bert_config,
+num_labels,
+init_checkpoint,
+learning_rate,
+num_train_steps,
+num_warmup_steps,
+use_tpu
 )
 }
 \arguments{
@@ -40,67 +40,67 @@ Returns \code{model_fn} closure, which is an input to \code{TPUEstimator}.
 \details{
 The \code{model_fn} function takes four parameters: \describe{
 \item{features}{A list (or similar structure) that contains objects such as
- \code{input_ids}, \code{input_mask}, \code{segment_ids},  and
- \code{label_ids}. These objects will be inputs to the \code{create_model}
- function.}
+\code{input_ids}, \code{input_mask}, \code{segment_ids}, and
+\code{label_ids}. These objects will be inputs to the \code{create_model}
+function.}
 \item{labels}{Not used in this function, but presumably we need to
- keep this slot here.}
+keep this slot here.}
 \item{mode}{Character; value such as "train", "infer",
- or "eval".}
+or "eval".}
 \item{params}{Not used in this function, but presumably we need
- to keep this slot here.}
- }
+to keep this slot here.}
+}
 
 The output of \code{model_fn} is the result of a
-\code{tf$contrib$tpu$TPUEstimatorSpec} call.
+\code{tf$compat$v1$estimator$tpu$TPUEstimatorSpec} call.
 
 This reference may be helpful:
 \url{https://tensorflow.rstudio.com/tfestimators/articles/creating_estimators.html}
 }
 \examples{
 \dontrun{
-with(tensorflow::tf$variable_scope("examples",
-  reuse = tensorflow::tf$AUTO_REUSE
+with(tensorflow::tf$compat$v1$variable_scope("examples",
+reuse = tensorflow::tf$compat$v1$AUTO_REUSE
 ), {
-  input_ids <- tensorflow::tf$constant(list(
-    list(31L, 51L, 99L),
-    list(15L, 5L, 0L)
-  ))
+input_ids <- tensorflow::tf$constant(list(
+list(31L, 51L, 99L),
+list(15L, 5L, 0L)
+))
 
-  input_mask <- tensorflow::tf$constant(list(
-    list(1L, 1L, 1L),
-    list(1L, 1L, 0L)
-  ))
-  token_type_ids <- tensorflow::tf$constant(list(
-    list(0L, 0L, 1L),
-    list(0L, 2L, 0L)
-  ))
-  config <- BertConfig(
-    vocab_size = 30522L,
-    hidden_size = 768L,
-    num_hidden_layers = 8L,
-    type_vocab_size = 2L,
-    num_attention_heads = 12L,
-    intermediate_size = 3072L
-  )
+input_mask <- tensorflow::tf$constant(list(
+list(1L, 1L, 1L),
+list(1L, 1L, 0L)
+))
+token_type_ids <- tensorflow::tf$constant(list(
+list(0L, 0L, 1L),
+list(0L, 2L, 0L)
+))
+config <- BertConfig(
+vocab_size = 30522L,
+hidden_size = 768L,
+num_hidden_layers = 8L,
+type_vocab_size = 2L,
+num_attention_heads = 12L,
+intermediate_size = 3072L
+)
 
-  temp_dir <- tempdir()
-  init_checkpoint <- file.path(
-    temp_dir,
-    "BERT_checkpoints",
-    "uncased_L-12_H-768_A-12",
-    "bert_model.ckpt"
-  )
+temp_dir <- tempdir()
+init_checkpoint <- file.path(
+temp_dir,
+"BERT_checkpoints",
+"uncased_L-12_H-768_A-12",
+"bert_model.ckpt"
+)
 
-  example_mod_fn <- model_fn_builder(
-    bert_config = config,
-    num_labels = 2L,
-    init_checkpoint = init_checkpoint,
-    learning_rate = 0.01,
-    num_train_steps = 20L,
-    num_warmup_steps = 10L,
-    use_tpu = FALSE
-  )
+example_mod_fn <- model_fn_builder(
+bert_config = config,
+num_labels = 2L,
+init_checkpoint = init_checkpoint,
+learning_rate = 0.01,
+num_train_steps = 20L,
+num_warmup_steps = 10L,
+use_tpu = FALSE
+)
 })
 }
 }

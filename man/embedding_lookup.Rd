@@ -5,11 +5,11 @@
 \title{Look up words embeddings for id tensor}
 \usage{
 embedding_lookup(
-  input_ids,
-  vocab_size,
-  embedding_size = 128L,
-  initializer_range = 0.02,
-  word_embedding_name = "word_embeddings"
+input_ids,
+vocab_size,
+embedding_size = 128L,
+initializer_range = 0.02,
+word_embedding_name = "word_embeddings"
 )
 }
 \arguments{
@@ -26,7 +26,7 @@ word ids.}
 }
 \value{
 Float Tensor of shape [batch_size, seq_length, embedding_size], along
-  with the embedding table in a list.
+with the embedding table in a list.
 }
 \description{
 Look up words embeddings for id tensor
@@ -34,13 +34,13 @@ Look up words embeddings for id tensor
 \examples{
 \dontrun{
 with(
-  tensorflow::tf$variable_scope("examples",
-    reuse = tensorflow::tf$AUTO_REUSE
-  ),
-  ids <- tensorflow::tf$get_variable("x",
-    dtype = "int32",
-    shape = tensorflow::shape(10, 20)
-  )
+tensorflow::tf$compat$v1$variable_scope("examples",
+reuse = tensorflow::tf$compat$v1$AUTO_REUSE
+),
+ids <- tensorflow::tf$compat$v1$get_variable("x",
+dtype = "int32",
+shape = tensorflow::shape(10, 20)
+)
 )
 embedding_lookup(ids, vocab_size = 100, word_embedding_name = "some_name")
 }

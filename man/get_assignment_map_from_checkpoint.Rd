@@ -15,11 +15,11 @@ explicit, starting with "/".}
 }
 \value{
 List with two elements: the assignment map and the initialized
-  variable names. The assignment map is a list of the "base" variable names
-  that are in both the current computational graph and the checkpoint. The
-  initialized variable names list contains both the base names and the base
-  names + ":0". (This seems redundant to me. I assume it will make sense
-  later. -JDB)
+variable names. The assignment map is a list of the "base" variable names
+that are in both the current computational graph and the checkpoint. The
+initialized variable names list contains both the base names and the base
+names + ":0". (This seems redundant to me. I assume it will make sense
+later. -JDB)
 }
 \description{
 Returns the intersection (not the union, as python docs say -JDB) of the sets
@@ -36,27 +36,27 @@ the original model structure to reconstruct the computational graph. -JDB
 \dontrun{
 # Just for illustration: create a "model" with a couple variables
 # that overlap some variable names in the BERT checkpoint.
-with(tensorflow::tf$variable_scope("bert",
-  reuse = tensorflow::tf$AUTO_REUSE
+with(tensorflow::tf$compat$v1$variable_scope("bert",
+reuse = tensorflow::tf$compat$v1$AUTO_REUSE
 ), {
-  test_ten1 <- tensorflow::tf$get_variable(
-    "encoder/layer_9/output/dense/bias",
-    shape = c(1L, 2L, 3L)
-  )
-  test_ten2 <- tensorflow::tf$get_variable(
-    "encoder/layer_9/output/dense/kernel",
-    shape = c(1L, 2L, 3L)
-  )
+test_ten1 <- tensorflow::tf$compat$v1$get_variable(
+"encoder/layer_9/output/dense/bias",
+shape = c(1L, 2L, 3L)
+)
+test_ten2 <- tensorflow::tf$compat$v1$get_variable(
+"encoder/layer_9/output/dense/kernel",
+shape = c(1L, 2L, 3L)
+)
 })
-tvars <- tensorflow::tf$get_collection(
-  tensorflow::tf$GraphKeys$GLOBAL_VARIABLES
+tvars <- tensorflow::tf$compat$v1$get_collection(
+tensorflow::tf$compat$v1$GraphKeys$GLOBAL_VARIABLES
 )
 temp_dir <- tempdir()
 init_checkpoint <- file.path(
-  temp_dir,
-  "BERT_checkpoints",
-  "uncased_L-12_H-768_A-12",
-  "bert_model.ckpt"
+temp_dir,
+"BERT_checkpoints",
+"uncased_L-12_H-768_A-12",
+"bert_model.ckpt"
 )
 
 amap <- get_assignment_map_from_checkpoint(tvars, init_checkpoint)

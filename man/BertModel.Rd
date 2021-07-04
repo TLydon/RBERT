@@ -5,12 +5,12 @@
 \title{Construct object of class BertModel}
 \usage{
 BertModel(
-  config,
-  is_training,
-  input_ids,
-  input_mask = NULL,
-  token_type_ids = NULL,
-  scope = NULL
+config,
+is_training,
+input_ids,
+input_mask = NULL,
+token_type_ids = NULL,
+scope = NULL
 )
 }
 \arguments{
@@ -54,36 +54,36 @@ token.}
 }
 \examples{
 \dontrun{
-with(tensorflow::tf$variable_scope("examples",
-  reuse = tensorflow::tf$AUTO_REUSE
+with(tensorflow::tf$compat$v1$variable_scope("examples",
+reuse = tensorflow::tf$compat$v1$AUTO_REUSE
 ), {
-  input_ids <- tensorflow::tf$constant(list(
-    list(31L, 51L, 99L),
-    list(15L, 5L, 0L)
-  ))
+input_ids <- tensorflow::tf$constant(list(
+list(31L, 51L, 99L),
+list(15L, 5L, 0L)
+))
 
-  input_mask <- tensorflow::tf$constant(list(
-    list(1L, 1L, 1L),
-    list(1L, 1L, 0L)
-  ))
-  token_type_ids <- tensorflow::tf$constant(list(
-    list(0L, 0L, 1L),
-    list(0L, 2L, 0L)
-  ))
-  config <- BertConfig(
-    vocab_size = 32000L,
-    hidden_size = 768L,
-    num_hidden_layers = 8L,
-    num_attention_heads = 12L,
-    intermediate_size = 1024L
-  )
-  model <- BertModel(
-    config = config,
-    is_training = TRUE,
-    input_ids = input_ids,
-    input_mask = input_mask,
-    token_type_ids = token_type_ids
-  )
+input_mask <- tensorflow::tf$constant(list(
+list(1L, 1L, 1L),
+list(1L, 1L, 0L)
+))
+token_type_ids <- tensorflow::tf$constant(list(
+list(0L, 0L, 1L),
+list(0L, 2L, 0L)
+))
+config <- BertConfig(
+vocab_size = 32000L,
+hidden_size = 768L,
+num_hidden_layers = 8L,
+num_attention_heads = 12L,
+intermediate_size = 1024L
+)
+model <- BertModel(
+config = config,
+is_training = TRUE,
+input_ids = input_ids,
+input_mask = input_mask,
+token_type_ids = token_type_ids
+)
 })
 }
 }

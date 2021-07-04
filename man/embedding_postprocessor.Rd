@@ -5,16 +5,16 @@
 \title{Perform various post-processing on a word embedding tensor}
 \usage{
 embedding_postprocessor(
-  input_tensor,
-  use_token_type = FALSE,
-  token_type_ids = NULL,
-  token_type_vocab_size = 16L,
-  token_type_embedding_name = "token_type_embeddings",
-  use_position_embeddings = TRUE,
-  position_embedding_name = "position_embeddings",
-  initializer_range = 0.02,
-  max_position_embeddings = 512L,
-  dropout_prob = 0.1
+input_tensor,
+use_token_type = FALSE,
+token_type_ids = NULL,
+token_type_vocab_size = 16L,
+token_type_embedding_name = "token_type_embeddings",
+use_position_embeddings = TRUE,
+position_embedding_name = "position_embeddings",
+initializer_range = 0.02,
+max_position_embeddings = 512L,
+dropout_prob = 0.1
 )
 }
 \arguments{
@@ -70,23 +70,23 @@ token "type" is essentially a sentence identifier, indicating which sentence
 batch_size <- 10
 seq_length <- 512
 embedding_size <- 200
-with(tensorflow::tf$variable_scope("examples",
-  reuse = tensorflow::tf$AUTO_REUSE
+with(tensorflow::tf$compat$v1$variable_scope("examples",
+reuse = tensorflow::tf$compat$v1$AUTO_REUSE
 ), {
-  input_tensor <- tensorflow::tf$get_variable(
-    "input",
-    dtype = "float",
-    shape = tensorflow::shape(batch_size, seq_length, embedding_size)
-  )
-  token_type_ids <- tensorflow::tf$get_variable(
-    "ids",
-    dtype = "int32",
-    shape = tensorflow::shape(batch_size, seq_length)
-  )
+input_tensor <- tensorflow::tf$compat$v1$get_variable(
+"input",
+dtype = "float",
+shape = tensorflow::shape(batch_size, seq_length, embedding_size)
+)
+token_type_ids <- tensorflow::tf$compat$v1$get_variable(
+"ids",
+dtype = "int32",
+shape = tensorflow::shape(batch_size, seq_length)
+)
 })
 embedding_postprocessor(input_tensor,
-  use_token_type = TRUE,
-  token_type_ids = token_type_ids
+use_token_type = TRUE,
+token_type_ids = token_type_ids
 )
 }
 }

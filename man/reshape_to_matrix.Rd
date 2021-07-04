@@ -19,13 +19,13 @@ preserved; the rest are flattened.
 \examples{
 \dontrun{
 with(
-  tensorflow::tf$variable_scope("examples",
-    reuse = tensorflow::tf$AUTO_REUSE
-  ),
-  r3t <- tensorflow::tf$get_variable("r3t",
-    dtype = "int32",
-    shape = c(10, 20, 3)
-  )
+tensorflow::tf$compat$v1$variable_scope("examples",
+reuse = tensorflow::tf$compat$v1$AUTO_REUSE
+),
+r3t <- tensorflow::tf$compat$v1$get_variable("r3t",
+dtype = "int32",
+shape = c(10, 20, 3)
+)
 )
 reshape_to_matrix(r3t)
 }

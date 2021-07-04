@@ -13,7 +13,7 @@ layer_norm(input_tensor, name = NULL)
 }
 \value{
 A Tensor of the same shape and type as `input_tensor`, with
-  normalization applied.
+normalization applied.
 }
 \description{
 Run layer normalization on the last dimension of the tensor.
@@ -33,7 +33,7 @@ rank(inputs) ) and will be broadcast with the normalized inputs accordingly.
 }
 \examples{
 \dontrun{
-tfx <- tensorflow::tf$get_variable("example", tensorflow::shape(10L))
+tfx <- tensorflow::tf$compat$v1$get_variable("example", tensorflow::shape(10L))
 layer_norm(tfx)
 }
 }
