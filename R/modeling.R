@@ -1948,7 +1948,7 @@ return(obj)
 #'
 #' @examples
 #' \dontrun{
-#' tfx <- tensorflow::tf.compat.v1.get_variable("none", tensorflow::shape(10L))
+#' tfx <- tensorflow::tf.compat$v1$get_variable("none", tensorflow::shape(10L))
 #' gelu(tfx)
 #' }
 gelu <- function(x) {
@@ -2040,11 +2040,11 @@ stop(paste("Unsupported activation", activation_string))
 #' with(tensorflow::tf$compat$v1$variable_scope("bert",
 #' reuse = tensorflow::tf$compat$v1$AUTO_REUSE
 #' ), {
-#' test_ten1 <- tensorflow::tf.compat.v1.get_variable(
+#' test_ten1 <- tensorflow::tf.compat$v1$get_variable(
 #' "encoder/layer_9/output/dense/bias",
 #' shape = c(1L, 2L, 3L)
 #' )
-#' test_ten2 <- tensorflow::tf.compat.v1.get_variable(
+#' test_ten2 <- tensorflow::tf.compat$v1$get_variable(
 #' "encoder/layer_9/output/dense/kernel",
 #' shape = c(1L, 2L, 3L)
 #' )
@@ -2113,7 +2113,7 @@ return(list(
 #'
 #' @examples
 #' \dontrun{
-#' tfx <- tensorflow::tf.compat.v1.get_variable("none", tensorflow::shape(10L))
+#' tfx <- tensorflow::tf.compat$v1$get_variable("none", tensorflow::shape(10L))
 #' dropout(tfx, 0.5)
 #' }
 dropout <- function(input_tensor, dropout_prob = NULL) {
@@ -2152,7 +2152,7 @@ return(output)
 #'
 #' @examples
 #' \dontrun{
-#' tfx <- tensorflow::tf.compat.v1.get_variable("example", tensorflow::shape(10L))
+#' tfx <- tensorflow::tf.compat$v1$get_variable("example", tensorflow::shape(10L))
 #' layer_norm(tfx)
 #' }
 layer_norm <- function(input_tensor, name = NULL) {
@@ -2180,7 +2180,7 @@ scope = name
 #'
 #' @examples
 #' \dontrun{
-#' tfx <- tensorflow::tf.compat.v1.get_variable("example2", tensorflow::shape(10L))
+#' tfx <- tensorflow::tf.compat$v1$get_variable("example2", tensorflow::shape(10L))
 #' layer_norm_and_dropout(tfx, dropout_prob = 0.5)
 #' }
 layer_norm_and_dropout <- function(input_tensor,
@@ -2235,7 +2235,7 @@ tensorflow::tf$compat$v1$truncated_normal_initializer(stddev = initializer_range
 #' tensorflow::tf$compat$v1$variable_scope("examples",
 #' reuse = tensorflow::tf$compat$v1$AUTO_REUSE
 #' ),
-#' ids <- tensorflow::tf.compat.v1.get_variable("x",
+#' ids <- tensorflow::tf.compat$v1$get_variable("x",
 #' dtype = "int32",
 #' shape = tensorflow::shape(10, 20)
 #' )
@@ -2258,7 +2258,7 @@ input_ids <- tensorflow::tf$expand_dims(input_ids, axis = c(-1L))
 stop("input_id tensor has incorrect shape.")
 }
 
-embedding_table <- tensorflow::tf.compat.v1.get_variable(
+embedding_table <- tensorflow::tf.compat$v1$get_variable(
 name = word_embedding_name,
 shape = tensorflow::shape(vocab_size, embedding_size),
 initializer = create_initializer(initializer_range)
@@ -2344,12 +2344,12 @@ return(list(output, embedding_table))
 #' with(tensorflow::tf$compat$v1$variable_scope("examples",
 #' reuse = tensorflow::tf$compat$v1$AUTO_REUSE
 #' ), {
-#' input_tensor <- tensorflow::tf.compat.v1.get_variable(
+#' input_tensor <- tensorflow::tf.compat$v1$get_variable(
 #' "input",
 #' dtype = "float",
 #' shape = tensorflow::shape(batch_size, seq_length, embedding_size)
 #' )
-#' token_type_ids <- tensorflow::tf.compat.v1.get_variable(
+#' token_type_ids <- tensorflow::tf.compat$v1$get_variable(
 #' "ids",
 #' dtype = "int32",
 #' shape = tensorflow::shape(batch_size, seq_length)
@@ -2382,7 +2382,7 @@ if (use_token_type) {
 if (is.null(token_type_ids)) {
 stop("`token_type_ids` must be specified if `use_token_type` is TRUE.")
 }
-token_type_table <- tensorflow::tf.compat.v1.get_variable(
+token_type_table <- tensorflow::tf.compat$v1$get_variable(
 name = token_type_embedding_name,
 shape = tensorflow::shape(token_type_vocab_size, width),
 initializer = create_initializer(initializer_range)
@@ -2416,7 +2416,7 @@ with(tensorflow::tf$control_dependencies(list(assert_op)), {
 # what follows runs only after `assert_op`; see:
 # https://devdocs.io/tensorflow~python/tf/graph#control_dependencies
 
-full_position_embeddings <- tensorflow::tf.compat.v1.get_variable(
+full_position_embeddings <- tensorflow::tf.compat$v1$get_variable(
 name = position_embedding_name,
 shape = tensorflow::shape(max_position_embeddings, width),
 initializer = create_initializer(initializer_range)
@@ -2489,10 +2489,10 @@ return(output)
 #' with(tensorflow::tf$compat$v1$variable_scope("examples",
 #' reuse = tensorflow::tf$compat$v1$AUTO_REUSE
 #' ), {
-#' from_tensor <- ids <- tensorflow::tf.compat.v1.get_variable("ften",
+#' from_tensor <- ids <- tensorflow::tf.compat$v1$get_variable("ften",
 #' dtype = "float", shape = c(10, 20)
 #' )
-#' to_mask <- ids <- tensorflow::tf.compat.v1.get_variable("mask",
+#' to_mask <- ids <- tensorflow::tf.compat$v1$get_variable("mask",
 #' dtype = "int32", shape = c(10, 30)
 #' )
 #' })
@@ -2863,7 +2863,7 @@ return(to_return)
 #' with(tensorflow::tf$compat$v1$variable_scope("examples",
 #' reuse = tensorflow::tf$compat$v1$AUTO_REUSE
 #' ), {
-#' input_tensor <- tensorflow::tf.compat.v1.get_variable("input",
+#' input_tensor <- tensorflow::tf.compat$v1$get_variable("input",
 #' shape = c(
 #' batch_size,
 #' seq_length,
@@ -3111,7 +3111,7 @@ return(shape)
 #' tensorflow::tf$compat$v1$variable_scope("examples",
 #' reuse = tensorflow::tf$compat$v1$AUTO_REUSE
 #' ),
-#' r3t <- tensorflow::tf.compat.v1.get_variable("r3t",
+#' r3t <- tensorflow::tf.compat$v1$get_variable("r3t",
 #' dtype = "int32",
 #' shape = c(10, 20, 3)
 #' )
@@ -3157,7 +3157,7 @@ return(output_tensor)
 #' tensorflow::tf$compat$v1$variable_scope("examples",
 #' reuse = tensorflow::tf$compat$v1$AUTO_REUSE
 #' ),
-#' r2t <- tensorflow::tf.compat.v1.get_variable("r2t",
+#' r2t <- tensorflow::tf.compat$v1$get_variable("r2t",
 #' dtype = "int32",
 #' shape = c(10, 20)
 #' )
@@ -3205,7 +3205,7 @@ orig_shape_list
 #' with(tensorflow::tf$compat$v1$variable_scope("examples",
 #' reuse = tensorflow::tf$compat$v1$AUTO_REUSE
 #' ), {
-#' ids <- tensorflow::tf.compat.v1.get_variable("x", dtype = "int32", shape = 10L)
+#' ids <- tensorflow::tf.compat$v1$get_variable("x", dtype = "int32", shape = 10L)
 #' assert_rank(ids, 1)
 #' assert_rank(ids, 1:2)
 #' assert_rank(ids, 2)

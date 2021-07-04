@@ -398,7 +398,7 @@ return(this_opt)
 #' with(tensorflow::tf$compat$v1$variable_scope("examples",
 #' reuse = tensorflow::tf$compat$v1$AUTO_REUSE
 #' ), {
-#' totrain <- tensorflow::tf.compat.v1.get_variable(
+#' totrain <- tensorflow::tf.compat$v1$get_variable(
 #' "totrain",
 #' tensorflow::shape(10L, 20L)
 #' )
@@ -618,14 +618,14 @@ if (!is.na(match)) {
 param_name <- match # variable name
 }
 
-m <- tensorflow::tf.compat.v1.get_variable(
+m <- tensorflow::tf.compat$v1$get_variable(
 name = paste0(param_name, "/adam_m"),
 shape = param$shape$as_list(),
 dtype = tensorflow::tf$float32,
 trainable = FALSE,
 initializer = tensorflow::tf$zeros_initializer()
 )
-v <- tensorflow::tf.compat.v1.get_variable(
+v <- tensorflow::tf.compat$v1$get_variable(
 name = paste0(param_name, "/adam_v"),
 shape = param$shape$as_list(),
 dtype = tensorflow::tf$float32,
