@@ -591,7 +591,7 @@ tokenizer <- FullTokenizer(
 vocab_file = vocab_file,
 do_lower_case = TRUE
 )
-is_per_host <- tensorflow::tf$compat$v1$estimator$tpu$InputPipelineConfig
+is_per_host <- tensorflow::tf$compat$v1$estimator$tpu$InputPipelineConfig$PER_HOST_V2
 
 run_config <- tensorflow::tf$compat$v1$estimator$tpu$RunConfig(
 master = NULL, # assume for now *not* for TPU
